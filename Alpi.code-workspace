@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../Alpi"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "eksperiment"
+	}
+}

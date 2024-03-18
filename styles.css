@@ -1,0 +1,197 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    
+  }
+  .main{
+    width: 100%;
+    height: 200vh;
+    background-color: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .background-clip{
+    
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+@media (min-aspect-ratio:1){
+    .background-clip{
+        width: 100%;
+        height: auto;
+    }
+}
+@media (max-aspect-ratio:16/9){
+    .background-clip{
+        width: auto;
+        height: 100%;
+    }}
+  .navbar{
+    width:95%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo{
+    font-size: 2em;
+    color: black;
+    font-weight: bold;
+}
+.navbar ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 20px ;
+    position: relative;
+}
+.navbar ul li a{
+    text-decoration: none;
+    color:black;
+    font-size: 1.3em;
+}
+.navbar ul li::after{
+    content: '';
+    height: 5px;
+    width: 0;
+    background: #fff;
+    position: absolute;
+    left: 0;
+    bottom: 15px;
+    transition: 0.5s;
+}
+.navbar ul li:hover::after{
+    width: 100%;
+
+}
+  
+ 
+  
+  .popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .popup-content {
+    background-color: white;
+    width: 300px;
+    height: 300px;
+    padding: 20px;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5s);
+    
+    
+  }
+  
+  .close {
+    float: right;
+    cursor: pointer;
+  }
+  
+ 
+  #loginBtn{
+    background: transparent;
+    border: none;
+    font-size: 1.3em;
+  }
+  .popup-content .h2{
+   margin-left: 115px;
+  }
+  #loginForm{
+    
+    height: 100px;
+    padding: 50px;
+    padding-left:20px;
+    padding-top: 10px;
+  }
+  #loginForm input{
+    
+    height: 30px;
+    width: 240px;
+  }
+  #loginForm label{
+    
+    font-size: 1.2em;
+  }
+ #loginForm #submit{
+    
+    width: 248px;
+    height: 40px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border: none;
+ }
+ #loginForm #forgot-password{
+    position: absolute;
+    text-decoration: none;
+    font-size: 1em;
+    margin-left: 120px;
+    color: black;
+ }
+ #loginForm #submit:hover{
+  background: transparent;
+  transition: 0.4s;
+ }
+ .hero {
+  background-image: url('image1.jpg'); /* Replace 'hotel-image.jpg' with your own image */
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  width: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+  margin-top:1050px ;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+
+#explore-btn {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#explore-btn:hover {
+  background-color: #0056b3;
+}
+
+
+
