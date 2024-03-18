@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avoriaz-style Interactive Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        #map {
+            height: 100vh;
+            width: 70%;
+            float: left;
+        }
+
+        #search-tab {
+            width: 30%;
+            float: left;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1, h2 {
+            margin: 0 0 10px 0;
+            font-weight: bold;
+            color: #333;
+        }
+
+        #search-input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .search-result {
+            padding: 10px;
+            background-color: #f9f9f9;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-result:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+
+<!-- Search tab -->
+<div id="search-tab">
+    <h1>Search</h1>
+    <input type="text" id="search-input" placeholder="Search for a place...">
+    <div id="search-results"></div>
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+
+    var popularPlaces = [
+        { name: "Example Place 1", latlng: [46.193885, 6.776232] },
+        { name: "Example Place 2", latlng: [46.195299, 6.773917] },
+        { name: "Example Place 3", latlng: [46.196898, 6.775220] }
+    ];
+    var map = L.map('map').setView([46.195028, 6.776023], 14);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    popularPlaces.forEach(place => {
+        var marker = L.marker(place.latlng).addTo(map);
+        marker.bindPopup(place.name);
+    });
+
+    document.getElementById('search-input').addEventListener('input', function() {
+        var query = this.value.toLowerCase();
+        var searchResults = popularPlaces.filter(place => {
+            return place.name.toLowerCase().includes(query);
+        });
+
+        displaySearchResults(searchResults);
+    });
+
+    function displaySearchResults(results) {
+        var searchResultsContainer = document.getElementById('search-results');
+        searchResultsContainer.innerHTML = '';
+
+        results.forEach(result => {
+            var searchResult = document.createElement('div');
+            searchResult.classList.add('search-result');
+            searchResult.textContent = result.name;
+            searchResult.addEventListener('click', function() {
+                map.setView(result.latlng, 14);
+            });
+            searchResultsContainer.appendChild(searchResult);
+        });
+    }
+</script>
+
+</body>
+</html>
